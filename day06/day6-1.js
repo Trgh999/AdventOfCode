@@ -37,19 +37,12 @@ async function prettyPrint(array){
     await new Promise(r => setTimeout(r,100));
 
     process.stdout.write("\x1b[2J\x1b[H");
-    // process.stdout.write(`\x1b[${array.length}A`);
     process.stdout.write(`\r${printArr}`);
-
-    // console.log(array.length, array[0].length);
-    // process.stdout.write(`\u001b[<${array.length}>A`);
-    // process.stdout.write(`\u001b[<${array[0].length}>D`);
-    // console.log('\u001b[31m');
-    // process.stdout.write(printArr);
 }
 
 
-async function getStep(array,pos,total){
-    await prettyPrint(array);
+function getStep(array,pos,total){
+    // await prettyPrint(array);
     const leni = array.length;
     const lenj = array[0].length;
     let i = pos[0];
@@ -135,6 +128,6 @@ async function getStep(array,pos,total){
 
 (async () => {
     let array = await readFileAsArray(__dirname+'/day6input.txt');
-    const total = await getStep(array,getStart(array),0);
+    const total = getStep(array,getStart(array),0);
     console.log(total);
 })();
