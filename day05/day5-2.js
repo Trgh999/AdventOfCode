@@ -23,16 +23,14 @@ async function readFileAsArray(filePath) {
 function verifyArray(array){
     let total = 0;
     const conditions = array[0];
-    let arrays = array[1];
-    let k=0;
-    let j=0;
+    const arrays = array[1];
     let possible=true;
     for(let i = 0;i<arrays.length;i++){
-        k=0
-        j=0;
+        let k=0
+        let j=0;
         possible=true;
         const len = arrays[i].length;
-        while(j<conditions.length && possible){
+        while(j<conditions.length){
             k=0;
             let iprec = -1;
             let isuiv = -1;
@@ -45,12 +43,14 @@ function verifyArray(array){
                 if(iprec != -1 && isuiv != -1){
                     if(iprec>isuiv){
                         possible=false;
-                        //ici traitement
-                        const tmp = arrays[i][iprec];
+                        let tmp = arrays[i][iprec];
                         arrays[i][iprec] = arrays[i][isuiv];
-                        arrays[i][suiv] = tmp;
-                        k=0;
+                        arrays[i][isuiv] = tmp;
+                        k=len;
+                        console.log(arrays[i][isuiv], arrays[i][iprec]);
+                        j=-1;
                     }
+                    else{k=len;}
                 }
             }
             j++;

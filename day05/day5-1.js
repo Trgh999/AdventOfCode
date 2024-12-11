@@ -24,12 +24,10 @@ function verifyArray(array){
     let total = 0;
     const conditions = array[0];
     const arrays = array[1];
-    let k=0;
-    let j=0;
     let possible=true;
     for(let i = 0;i<arrays.length;i++){
-        k=0
-        j=0;
+        let k=0
+        let j=0;
         possible=true;
         const len = arrays[i].length;
         while(j<conditions.length && possible){
